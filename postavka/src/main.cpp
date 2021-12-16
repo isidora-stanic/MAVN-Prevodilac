@@ -11,7 +11,8 @@ int main()
 {
 	try
 	{
-		std::string fileName = ".\\..\\examples\\multiply.mavn";
+		// putanja do ulazne datoteke sa mavn kodom
+		std::string fileName = ".\\..\\examples\\simple.mavn";
 		bool retVal = false;
 
 		LexicalAnalysis lex;
@@ -25,7 +26,7 @@ int main()
 
 		if (retVal)
 		{
-			//cout << "Lexical analysis finished successfully!" << endl;
+			cout << "Lexical analysis finished successfully!" << endl;
 		}
 		else
 		{
@@ -39,7 +40,7 @@ int main()
 
 		if (retSynVal)
 		{
-			//cout << "Syntax analysis finished successfully!" << endl;
+			cout << "Syntax analysis finished successfully!" << endl;
 		}
 		else
 		{
@@ -49,18 +50,18 @@ int main()
 		Program p(syntax);
 
 		p.makeInstructions();
-		//cout << "Instructions made successfully!" << endl;
+		cout << "Instructions made successfully!" << endl;
 		p.managmentFlowGraph();
-		//cout << "Managment flow graph made successfully!" << endl;
+		cout << "Managment flow graph made successfully!" << endl;
 
 		p.livenessAnalysis();
-		//cout << "Liveness analysis finished successfully!" << endl;
+		cout << "Liveness analysis finished successfully!" << endl;
 
 		p.buildInterferenceGraph();
-		//cout << "Interference graph made successfully!" << endl;
+		cout << "Interference graph made successfully!" << endl;
 
 		std::stack<Variable*>* stackVars = p.doSimplification(__REG_NUMBER__); //
-		//cout << "Simplification stack made successfully!" << endl;
+		cout << "Simplification stack made successfully!" << endl;
 		 
 		if (!p.doResourceAllocation(stackVars)) 
 		{
@@ -69,7 +70,7 @@ int main()
 		}
 		else
 		{
-			//cout << "Resource allocation finished successfully!" << endl;
+			cout << "Resource allocation finished successfully!" << endl;
 			cout << "Program translated successfully!" << endl;
 			printProgram(p, "result.s"); // ili neki drugi fajl
 		}
